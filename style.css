@@ -1,0 +1,212 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 12px;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, #192b65, #050817 65%);
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.game {
+  width: 100%;
+  max-width: 900px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px;
+  background: #111b3a;
+  border: 1px solid #425c9e;
+  border-radius: 14px 14px 0 0;
+}
+
+h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #8df8ff;
+}
+
+.stats {
+  display: flex;
+  gap: 14px;
+  font-size: 14px;
+}
+
+.upgrade {
+  padding: 10px 13px;
+  background: #0b1430;
+  border: 1px solid #425c9e;
+  border-top: 0;
+}
+
+#rocket-name {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #9ffaff;
+}
+
+.progress-bg {
+  height: 8px;
+  border-radius: 10px;
+  background: #263252;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+#progress {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #35eaff, #b16cff);
+  transition: width 0.2s;
+}
+
+#upgrade-text {
+  color: #b8c9ed;
+}
+
+.arena {
+  position: relative;
+  overflow: hidden;
+  background: #030615;
+  border: 1px solid #425c9e;
+  border-top: 0;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: min(65vh, 620px);
+  min-height: 380px;
+  touch-action: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: #020616c9;
+  backdrop-filter: blur(5px);
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.menu {
+  width: 100%;
+  max-width: 390px;
+  text-align: center;
+  padding: 24px 20px;
+  border: 1px solid #547aff;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #182956, #080e25);
+  box-shadow: 0 0 35px #315cff35;
+}
+
+.rocket-icon {
+  font-size: 60px;
+}
+
+h1 {
+  font-size: 27px;
+  color: #9ffaff;
+}
+
+.menu p {
+  color: #c9d8ff;
+  line-height: 1.5;
+}
+
+button {
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #76f4ff, #aaa0ff);
+  color: #07112d;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 13px;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+#start {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.menu small {
+  display: block;
+  color: #b5c5ec;
+  margin-top: 7px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: #111b3a;
+  border: 1px solid #425c9e;
+  border-top: 0;
+}
+
+.controls button {
+  flex: 1;
+  min-height: 52px;
+  font-size: 20px;
+}
+
+#fire {
+  flex: 1.5;
+  font-size: 14px;
+}
+
+.help {
+  color: #aebfe4;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+  body {
+    padding: 5px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .stats {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  canvas {
+    height: 60vh;
+    min-height: 360px;
+  }
+
+  .controls button {
+    min-height: 55px;
+    padding: 8px 4px;
+  }
+}

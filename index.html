@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmic Rocket 2D</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game">
+    <header class="topbar">
+      <h2>🚀 COSMIC ROCKET</h2>
+      <div class="stats">
+        <span>⭐ Ochko: <b id="score">0</b></span>
+        <span>❤️ Jon: <b id="lives">3</b></span>
+      </div>
+    </header>
+
+    <div class="upgrade">
+      <div id="rocket-name">🚀 Oddiy raketa</div>
+      <div class="progress-bg">
+        <div id="progress"></div>
+      </div>
+      <small id="upgrade-text">Keyingi raketa: 1.000 ochko</small>
+    </div>
+
+    <div class="arena">
+      <canvas id="game"></canvas>
+
+      <div class="overlay" id="overlay">
+        <div class="menu">
+          <div class="rocket-icon">🚀</div>
+          <h1 id="menu-title">COSMIC ROCKET</h1>
+          <p id="menu-text">
+            Toshlarni yo‘q qil va yangi raketalarni och!
+          </p>
+          <button id="start">O‘YINNI BOSHLASH</button>
+          <small>Kompyuter: A/D yoki ←/→</small>
+          <small>Telefon: pastdagi tugmalar</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="left">◀</button>
+      <button id="fire">✦ O‘Q OTISH</button>
+      <button id="right">▶</button>
+    </div>
+
+    <p class="help">
+      Kichik toshga 1 ta, katta toshga 2 ta o‘q kerak.
+      Har 1 sekundda avtomatik o‘q uziladi.
+    </p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
