@@ -1,6 +1,6 @@
-
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -17,6 +17,9 @@ body {
 .game {
   width: 100%;
   max-width: 900px;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .topbar {
@@ -99,6 +102,7 @@ canvas {
   padding: 18px;
   background: #020616c9;
   backdrop-filter: blur(5px);
+  z-index: 5;
 }
 
 .overlay.hidden {
@@ -139,8 +143,9 @@ button {
   font-weight: bold;
   padding: 13px;
   cursor: pointer;
-  touch-action: manipulation;
+  touch-action: none;
   user-select: none;
+  -webkit-user-select: none;
 }
 
 button:active {
@@ -150,6 +155,7 @@ button:active {
 #start {
   width: 100%;
   margin: 10px 0;
+  touch-action: manipulation;
 }
 
 .menu small {
@@ -183,6 +189,132 @@ button:active {
   text-align: center;
   font-size: 13px;
   line-height: 1.5;
+}
+
+/* ---------- Boss HUD ---------- */
+#boss-hud {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  right: 10px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.off {
+  display: none !important;
+}
+
+.boss-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffd0d8;
+  text-shadow: 0 1px 3px #000;
+  margin-bottom: 3px;
+}
+
+.boss-bar {
+  position: relative;
+  height: 14px;
+  border-radius: 8px;
+  background: #1b0a14;
+  border: 1px solid #ff6b86;
+  overflow: hidden;
+  box-shadow: 0 0 12px #ff3b5c66;
+}
+
+#boss-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #ff3b5c, #ff9a42);
+  transition: width 0.15s;
+}
+
+#boss-fill.p2 {
+  background: linear-gradient(90deg, #ff2d6f, #ffcf3b);
+}
+
+#boss-fill.p3 {
+  background: linear-gradient(90deg, #ff0040, #ff4de1);
+  animation: pulse 0.5s infinite alternate;
+}
+
+.boss-bar i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ffffff99;
+}
+
+@keyframes pulse {
+  to { filter: brightness(1.5); }
+}
+
+/* ---------- Notifications ---------- */
+#toast,
+#warning {
+  position: absolute;
+  left: 50%;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+#toast {
+  top: 52px;
+  transform: translateX(-50%);
+  padding: 7px 16px;
+  border-radius: 20px;
+  background: #0b1a45e6;
+  border: 1px solid #76f4ff;
+  color: #bffcff;
+  font-size: 14px;
+  font-weight: bold;
+  max-width: 94%;
+}
+
+#toast.danger {
+  background: #4a0a1ee6;
+  border-color: #ff6b86;
+  color: #ffd0d8;
+}
+
+#toast.show {
+  animation: toast 2.2s forwards;
+}
+
+#warning {
+  top: 38%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(22px, 6vw, 44px);
+  font-weight: 900;
+  color: #ff4d6a;
+  text-shadow: 0 0 18px #ff0033, 0 2px 4px #000;
+  letter-spacing: 1px;
+}
+
+#warning.show {
+  animation: warn 2.6s forwards;
+}
+
+@keyframes toast {
+  0% { opacity: 0; transform: translate(-50%, -8px); }
+  12%, 80% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; }
+}
+
+@keyframes warn {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+  10% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  20%, 40%, 60% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  30%, 50%, 70% { opacity: 0.35; transform: translate(-50%, -50%) scale(1); }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.05); }
 }
 
 @media (max-width: 560px) {

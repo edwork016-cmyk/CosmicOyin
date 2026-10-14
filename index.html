@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="uz">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Cosmic Rocket 2D</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -12,6 +11,7 @@
     <header class="topbar">
       <h2>🚀 COSMIC ROCKET</h2>
       <div class="stats">
+        <span>🏆 Daraja: <b id="level">1</b></span>
         <span>⭐ Ochko: <b id="score">0</b></span>
         <span>❤️ Jon: <b id="lives">3</b></span>
       </div>
@@ -28,16 +28,23 @@
     <div class="arena">
       <canvas id="game"></canvas>
 
+      <div id="boss-hud" class="off">
+        <div class="boss-top"><span id="boss-name">BOSS</span><span id="boss-phase"></span></div>
+        <div class="boss-bar"><div id="boss-fill"></div><i style="left:35%"></i><i style="left:70%"></i></div>
+      </div>
+      <div id="toast"></div>
+      <div id="warning"></div>
+
       <div class="overlay" id="overlay">
         <div class="menu">
           <div class="rocket-icon">🚀</div>
           <h1 id="menu-title">COSMIC ROCKET</h1>
           <p id="menu-text">
-            Toshlarni yo‘q qil va yangi raketalarni och!
+            Toshlarni yo‘q qil, o‘zga sayyoraliklarni yengib, bosslarni mag‘lub et!
           </p>
           <button id="start">O‘YINNI BOSHLASH</button>
-          <small>Kompyuter: A/D yoki ←/→</small>
-          <small>Telefon: pastdagi tugmalar</small>
+          <small>Kompyuter: WASD yoki strelkalar, Space — o‘q</small>
+          <small>Telefon: pastdagi tugmalar yoki ekranni sudrang</small>
         </div>
       </div>
     </div>
@@ -49,8 +56,9 @@
     </div>
 
     <p class="help">
-      Kichik toshga 1 ta, katta toshga 2 ta o‘q kerak.
-      Har 1 sekundda avtomatik o‘q uziladi.
+      Kichik toshga 1 ta, katta toshga 2 ta o‘q kerak, zirhli va gigant toshlar chidamliroq.
+      Raketa avtomatik o‘q uzadi, tugmani bosib ushlasangiz qo‘shimcha o‘q otiladi.
+      Har 5-darajada BOSS keladi!
     </p>
   </main>
 
